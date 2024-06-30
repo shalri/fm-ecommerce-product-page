@@ -1,16 +1,16 @@
-import Image from "next/image";
 import Header from "../components/Header";
 import SandBox from "../components/Sandbox";
 import Footer from "../components/Footer";
+import ProductPage from "@/components/ProductPage";
+import { CartProvider } from "@/contexts/CartContext";
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <main className="flex flex-grow flex-col items-center justify-center p-24">
-        <SandBox />
-      </main>
-      <Footer />
+      <CartProvider>
+        <Header />
+        <ProductPage itemName="Fall Limited Edition Sneakers" />
+      </CartProvider>
     </>
   );
 }
