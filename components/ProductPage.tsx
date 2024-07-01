@@ -15,17 +15,23 @@ export default function ProductPage({ itemName }: ProductPageProps) {
     (item) => item.name.toLowerCase() === itemName.toLowerCase(),
   );
 
-  const { itemCount, setItemCount, setItemName, itemPrice, setDynamicPrice } =
-    useCart();
+  const {
+    itemCount,
+    setItemCount,
+    setItemName,
+    itemPrice,
+    setDynamicPrice,
+    setItemThumbnail,
+  } = useCart();
 
   if (!foundProduct) {
     return <p>Product not found</p>;
   }
 
-  const { id, name, description, price, discount, images } = foundProduct;
-
+  const { name, description, price, discount, images } = foundProduct;
   setItemName(name);
   setDynamicPrice(price, discount);
+  setItemThumbnail(images[0].thumbnail as string);
 
   return (
     <main>

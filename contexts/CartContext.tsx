@@ -16,6 +16,8 @@ interface CartContextProps {
   itemPrice: string;
   setItemPrice: (price: string) => void;
   setDynamicPrice: (price: number, discount: number) => void;
+  itemThumbnail: string;
+  setItemThumbnail: (thumbnail: string) => void;
 }
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
@@ -24,6 +26,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [itemCount, setItemCount] = useState(0);
   const [itemName, setItemName] = useState("");
   const [itemPrice, setItemPrice] = useState("");
+  const [itemThumbnail, setItemThumbnail] = useState("")
 
   const setDynamicPrice = (price: number, discount: number) => {
     const computedPrice = discount ? price * (1 - discount) : price;
@@ -38,24 +41,26 @@ export function CartProvider({ children }: { children: ReactNode }) {
           itemCount: storedItemCount,
           itemName: storedItemName,
           itemPrice: storedItemPrice,
+          itemThumbnail: storedItemThumbnail,
         } = JSON.parse(storedData);
         setItemCount(storedItemCount);
         setItemName(storedItemName);
         setItemPrice(storedItemPrice);
+        setItemThumbnail(storedItemThumbnail)
       }
     }
   }, []);
 
   const saveCartToLocalStorage = useCallback(() => {
     if (typeof window !== "undefined") {
-      const cartData = { itemCount, itemName, itemPrice };
+      const cartData = { itemCount, itemName, itemPrice, itemThumbnail };
       localStorage.setItem("cartData", JSON.stringify(cartData));
     }
-  }, [itemCount, itemName, itemPrice]);
+  }, [itemCount, itemName, itemPrice, itemThumbnail]);
 
   useEffect(() => {
     saveCartToLocalStorage();
-  }, [itemCount, itemName, itemPrice, saveCartToLocalStorage]);
+  }, [itemCount, itemName, itemPrice, itemThumbnail, saveCartToLocalStorage]);
 
   return (
     <CartContext.Provider
@@ -67,6 +72,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
         itemPrice,
         setItemPrice,
         setDynamicPrice,
+        itemThumbnail,
+        setItemThumbnail
       }}
     >
       {children}

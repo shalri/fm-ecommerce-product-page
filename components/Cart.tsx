@@ -1,5 +1,6 @@
 import { useCart } from "@/contexts/CartContext";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 interface CartProps {
   show: boolean;
@@ -7,7 +8,7 @@ interface CartProps {
 }
 
 export default function Cart({ show, onClose }: CartProps) {
-  const { itemCount, itemName, itemPrice } = useCart();
+  const { itemCount, itemName, itemPrice, itemThumbnail } = useCart();
   const cartRef = useRef<HTMLDivElement>(null);
   const total = (parseFloat(itemPrice) * itemCount).toFixed(2);
 
@@ -39,6 +40,12 @@ export default function Cart({ show, onClose }: CartProps) {
       ) : (
         <>
           <h3 className="">{itemName}</h3>
+          <Image
+            src={itemThumbnail}
+            alt={`${itemName} thumbnail`}
+            width={50}
+            height={50}
+          />
           <p className="">
             ${itemPrice} + {itemCount} <strong>{total}</strong>
           </p>

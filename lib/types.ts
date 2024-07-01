@@ -1,8 +1,10 @@
 import { StaticImageData } from "next/image";
 
 export interface ProductImage {
-  img: StaticImageData;
-  thumbnail: StaticImageData;
+  // img: StaticImageData;
+  // thumbnail: StaticImageData;
+  img: string | StaticImageData;
+  thumbnail: string | StaticImageData;
 }
 
 export interface Product {
