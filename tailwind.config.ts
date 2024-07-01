@@ -33,8 +33,8 @@ const config: Config = {
         bold: "700",
       },
       screens: {
-        mobile: "375",
-        sm: "700",
+        mobile: "375px",
+        sm: "700px",
         desktop: "1440px",
       },
       backgroundImage: {

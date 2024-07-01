@@ -42,18 +42,9 @@ export default function Header() {
             </h2>
           </div>
 
-          {/* <div className={cn("hidden")}> */}
+          {/* <Nav show={showMobileNav} onClose={() => setShowMobileNav(false)} /> */}
+
           <Nav show={showMobileNav} onClose={() => setShowMobileNav(false)} />
-          {/* <nav className=""> */}
-          {/*   <ul className="flex"> */}
-          {/*     {navPages.map((page) => ( */}
-          {/*       <li className="" key={page.page}> */}
-          {/*         <a href={page.url}>{page.page}</a> */}
-          {/*       </li> */}
-          {/*     ))} */}
-          {/*   </ul> */}
-          {/* </nav> */}
-          {/* </div> */}
 
           <div className="flex items-center gap-x-10">
             <button

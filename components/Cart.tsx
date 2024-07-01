@@ -8,7 +8,8 @@ interface CartProps {
 }
 
 export default function Cart({ show, onClose }: CartProps) {
-  const { itemCount, itemName, itemPrice, itemThumbnail } = useCart();
+  const { itemCount, itemName, itemPrice, itemThumbnail, clearCart } =
+    useCart();
   const cartRef = useRef<HTMLDivElement>(null);
   const total = (parseFloat(itemPrice) * itemCount).toFixed(2);
 
@@ -25,6 +26,10 @@ export default function Cart({ show, onClose }: CartProps) {
       document.removeEventListener("click", handleClickOutsideCart);
     };
   }, [onClose]);
+
+  const handleClearCart = () => {
+    clearCart();
+  };
 
   return (
     <aside
@@ -49,6 +54,7 @@ export default function Cart({ show, onClose }: CartProps) {
           <p className="">
             ${itemPrice} + {itemCount} <strong>{total}</strong>
           </p>
+          <button onClick={handleClearCart}>Clear Cart</button>
         </>
       )}
     </aside>

@@ -18,6 +18,7 @@ interface CartContextProps {
   setDynamicPrice: (price: number, discount: number) => void;
   itemThumbnail: string;
   setItemThumbnail: (thumbnail: string) => void;
+  clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
@@ -26,11 +27,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [itemCount, setItemCount] = useState(0);
   const [itemName, setItemName] = useState("");
   const [itemPrice, setItemPrice] = useState("");
-  const [itemThumbnail, setItemThumbnail] = useState("")
+  const [itemThumbnail, setItemThumbnail] = useState("");
 
   const setDynamicPrice = (price: number, discount: number) => {
     const computedPrice = discount ? price * (1 - discount) : price;
     setItemPrice(computedPrice.toFixed(2));
+  };
+
+  const clearCart = () => {
+    setItemCount(0);
+    setItemName("");
+    setItemPrice("");
+    setItemThumbnail("");
   };
 
   useEffect(() => {
@@ -46,7 +54,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         setItemCount(storedItemCount);
         setItemName(storedItemName);
         setItemPrice(storedItemPrice);
-        setItemThumbnail(storedItemThumbnail)
+        setItemThumbnail(storedItemThumbnail);
       }
     }
   }, []);
@@ -73,7 +81,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
         setItemPrice,
         setDynamicPrice,
         itemThumbnail,
-        setItemThumbnail
+        setItemThumbnail,
+        clearCart,
       }}
     >
       {children}
