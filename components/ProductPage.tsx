@@ -5,6 +5,7 @@ import { Product } from "@/lib/types";
 import { useState } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { cn } from "@/lib/utils";
+import ProductCarousel from "./ProductCarousel";
 
 interface ProductPageProps {
   itemName: string;
@@ -35,10 +36,7 @@ export default function ProductPage({ itemName }: ProductPageProps) {
 
   return (
     <main>
-      <div className="">
-        <Image src={images[0].img} alt="product image" />
-        <Image src={images[0].thumbnail} alt="product image thumbnail" />
-      </div>
+      <ProductCarousel images={images} />
 
       <article className="">
         <h2 className="">brand</h2>

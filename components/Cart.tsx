@@ -35,7 +35,7 @@ export default function Cart({ show, onClose }: CartProps) {
     <aside
       ref={cartRef}
       className={cn(
-        "absolute inset-0 bottom-0 left-4 right-4 top-16 max-h-[40dvh] bg-white",
+        "absolute inset-0 bottom-0 left-4 right-4 top-16 z-20 block max-h-[40dvh] bg-white",
         show ? "block" : "hidden",
       )}
     >

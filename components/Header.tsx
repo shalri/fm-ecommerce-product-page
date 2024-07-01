@@ -24,35 +24,31 @@ export default function Header() {
   return (
     <>
       <Cart show={showCart} onClose={() => setShowCart(false)} />
-      <header className="mb-6 w-full bg-zinc-200 py-3">
-        <div className="flex items-center justify-between">
-          <div className="flex">
+      <header className="mb-0 px-6">
+        <div className="flex w-full items-center justify-between pb-6 pt-4">
+          <div className="flex items-end">
             <button
-              className="h-4 w-4 bg-[url(/images/icon-menu.svg)] bg-cover bg-no-repeat"
-              // onClick={() => setShowMobileNav(!showMobileNav)}
+              className="mr-4 h-4 w-4 bg-[url(/images/icon-menu.svg)] bg-cover bg-no-repeat"
               onClick={handleToggleMobileNav}
             ></button>
             <h2 className="">
               <Image
                 src="./images/logo.svg"
                 alt="Sneaker logo"
-                width={100}
-                height={50}
+                width={138}
+                height={22}
               />
             </h2>
           </div>
 
-          {/* <Nav show={showMobileNav} onClose={() => setShowMobileNav(false)} /> */}
-
           <Nav show={showMobileNav} onClose={() => setShowMobileNav(false)} />
 
-          <div className="flex items-center gap-x-10">
+          <div className="flex items-center gap-x-5 pt-1">
             <button
-              // onClick={() => setShowCart(!showCart)}
               onClick={handleToggleCart}
               className="relative h-5 w-6 bg-[url(/images/icon-cart.svg)] bg-center bg-no-repeat"
             >
-              <span className="absolute top-0 h-4 w-6 rounded-full bg-ep-orange text-[.65rem] font-bold text-white">
+              <span className="absolute -right-[4px] -top-[6px] h-[14px] w-5 rounded-full bg-ep-orange text-[.65rem] font-bold text-white">
                 {itemCount}
               </span>
             </button>
