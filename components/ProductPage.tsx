@@ -66,7 +66,23 @@ export default function ProductPage({ itemName }: ProductPageProps) {
             onClick={() => setItemCount(itemCount > 0 ? itemCount - 1 : 0)}
             className="h-[50px]  w-16 bg-[url(/images/icon-minus.svg)] bg-center bg-no-repeat"
           ></button>
-          <div className="font-bold text-ep-very-dark-blue">{itemCount}</div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={itemCount}
+              initial={{ opacity: 0, y: -5 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.1,
+                },
+              }}
+              exit={{ opacity: 0, y: -5 }}
+              className="font-bold text-ep-very-dark-blue"
+            >
+              {itemCount}
+            </motion.div>
+          </AnimatePresence>
           <button
             onClick={() => setItemCount(itemCount + 1)}
             className="h-[50px]  w-16 bg-[url(/images/icon-plus.svg)] bg-center bg-no-repeat"

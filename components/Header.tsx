@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { navPages } from "@/lib/data";
 import { useCart } from "@/contexts/CartContext";
 import Cart from "./Cart";
 import { useState } from "react";
@@ -31,11 +30,11 @@ export default function Header() {
         )}
       />
       <Cart show={showCart} onClose={() => setShowCart(false)} />
-      <header className="mb-0 px-6">
-        <div className="flex w-full items-center justify-between pb-6 pt-4">
+      <header className="mb-0 px-6 sm:mb-2 sm:border sm:border-b-ep-light-grayish-blue">
+        <div className="flex w-full items-center justify-between pb-6 pt-4 sm:mx-auto sm:max-w-[1440px] sm:justify-start sm:pb-8 sm:pt-6">
           <div className="flex items-end">
             <button
-              className="mr-4 h-4 w-4 bg-[url(/images/icon-menu.svg)] bg-cover bg-no-repeat"
+              className="mr-4 h-4 w-4 bg-[url(/images/icon-menu.svg)] bg-cover bg-no-repeat sm:hidden"
               onClick={handleToggleMobileNav}
             ></button>
             <h2 className="">
@@ -50,7 +49,7 @@ export default function Header() {
 
           <Nav show={showMobileNav} onClose={() => setShowMobileNav(false)} />
 
-          <div className="flex items-center gap-x-5 pt-1">
+          <div className="flex items-center gap-x-5 pt-1 sm:ml-auto sm:gap-x-[46px] sm:justify-self-end">
             <button
               onClick={handleToggleCart}
               className="relative h-5 w-6 bg-[url(/images/icon-cart.svg)] bg-center bg-no-repeat"
@@ -69,7 +68,7 @@ export default function Header() {
                 )}
               </AnimatePresence>
             </button>
-            <div className="relative h-6 w-6 overflow-hidden rounded-full">
+            <div className="relative h-6 w-6 overflow-hidden rounded-full sm:h-[50px] sm:w-[50px]">
               <Image
                 src="/images/image-avatar.png"
                 alt="User Profile"

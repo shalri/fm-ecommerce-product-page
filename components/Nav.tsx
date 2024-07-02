@@ -21,7 +21,7 @@ export default function Nav({ show, onClose }: NavProps) {
     };
 
     const checkScreenSize = () => {
-      setIsSmallScreen(window.innerWidth < 900);
+      setIsSmallScreen(window.innerWidth < 800);
     };
 
     window.addEventListener("resize", checkScreenSize);
@@ -55,7 +55,7 @@ export default function Nav({ show, onClose }: NavProps) {
       className={cn(
         isSmallScreen
           ? "flex h-full w-[67dvw] flex-col justify-start"
-          : "hidden sm:flex sm:flex-row",
+          : "hidden sm:flex sm:flex-row sm:gap-x-[34px] sm:tracking-[0.0275rem]",
       )}
     >
       <li
@@ -65,7 +65,7 @@ export default function Nav({ show, onClose }: NavProps) {
       {navPages.map((page) => (
         <li
           key={page.page}
-          className="pb-[19px] text-[1.08rem] font-bold text-ep-very-dark-blue"
+          className="pb-[19px] text-[1.08rem] font-bold text-ep-very-dark-blue sm:pb-0 sm:text-sm sm:font-normal"
         >
           <a href={page.url}>{page.page}</a>
         </li>
@@ -75,7 +75,7 @@ export default function Nav({ show, onClose }: NavProps) {
 
   return (
     <nav
-      className={cn("z-10 hidden bg-white sm:flex", show && "block")}
+      className={cn("z-10 hidden bg-white sm:ml-14 sm:flex", show && "block")}
       ref={navRef}
     >
       {isSmallScreen ? animateNavWrapper(navContent) : navContent}

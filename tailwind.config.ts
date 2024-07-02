@@ -34,7 +34,7 @@ const config: Config = {
       },
       screens: {
         mobile: "375px",
-        sm: "700px",
+        sm: "800px",
         desktop: "1440px",
       },
       backgroundImage: {
