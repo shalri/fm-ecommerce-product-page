@@ -25,26 +25,34 @@ export default function ProductCarousel({ images }: ProductCarouselProps) {
   return (
     <div className="z-10">
       <div className="relative">
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           <motion.div
-            key={images[current].img as string}
-            initial={{ opacity: 0 }}
+            key={current}
+            initial={{ opacity: 0.3 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className=""
+            exit={{ opacity: 0.3 }}
+            className="relative h-[300px] min-w-[375px] overflow-hidden bg-ep-orange"
           >
             <Image
               src={images[current].img}
               alt={`product image ${current + 1}`}
-              width={500}
-              height={500}
+              fill
+              className="object-cover object-center"
             />
           </motion.div>
         </AnimatePresence>
+        <div className="absolute top-[130px] flex w-full justify-between px-4">
+          <button
+            className="h-[40px] w-[40px] rounded-full bg-ep-white bg-[url(/images/icon-previous.svg)] bg-[length:9px_auto] bg-center bg-no-repeat"
+            onClick={prevImage}
+          ></button>
+          <button
+            className="h-[40px] w-[40px] rounded-full bg-ep-white bg-[url(/images/icon-next.svg)] bg-[length:9px_auto] bg-center bg-no-repeat"
+            onClick={nextImage}
+          ></button>
+        </div>
       </div>
-      <button onClick={prevImage}>Previous</button>
-      <button onClick={nextImage}>Next</button>
-      <div className="">
+      <div className="hidden sm:flex">
         {images.map((image, index) => (
           <Image
             key={index}
