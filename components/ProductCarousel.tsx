@@ -40,6 +40,20 @@ export default function ProductCarousel({ images }: ProductCarouselProps) {
     ? undefined
     : () => setLightboxOpen(!lightboxOpen);
 
+  const thumbnailAnimation = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.3 * index,
+      },
+    }),
+  };
+
   return (
     <div className="z-10">
       <Lightbox
@@ -79,21 +93,35 @@ export default function ProductCarousel({ images }: ProductCarouselProps) {
       </div>
       {!lightboxOpen && (
         <div className="mt-8 hidden sm:flex sm:gap-x-8">
-          {images.map((image, index) => (
-            <Image
-              key={index}
-              src={image.thumbnail}
-              alt={`thumbnail ${index + 1}`}
-              className={cn(
-                "z-40 h-[88px] w-[88px] cursor-pointer rounded-md",
-                index === current &&
-                  "border-[2px] border-ep-orange opacity-60 transition-opacity duration-300",
-              )}
-              width={100}
-              height={100}
-              onClick={() => setCurrent(index)}
-            />
-          ))}
+          <AnimatePresence>
+            {images.map((image, index) => (
+              <motion.div
+                className={cn(
+                  " h-[88px] w-[88px] overflow-hidden rounded-md",
+                  index === current &&
+                    "border-[2px] border-ep-orange transition-opacity duration-300",
+                )}
+                key={index}
+                variants={thumbnailAnimation}
+                initial="hidden"
+                whileInView="visible"
+                custom={index}
+              >
+                <Image
+                  src={image.thumbnail}
+                  alt={`thumbnail ${index + 1}`}
+                  className={cn(
+                    "cursor-pointer",
+                    index === current &&
+                      "opacity-60 transition-opacity duration-300",
+                  )}
+                  width={100}
+                  height={100}
+                  onClick={() => setCurrent(index)}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       )}
     </div>
