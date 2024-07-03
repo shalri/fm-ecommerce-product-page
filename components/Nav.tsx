@@ -3,6 +3,7 @@ import { navPages } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { ReactNode, useEffect, useRef, useState } from "react";
+import { useScreenSize } from "@/hooks/useScreenSize";
 
 interface NavProps {
   show: boolean;
@@ -10,7 +11,7 @@ interface NavProps {
 }
 
 export default function Nav({ show, onClose }: NavProps) {
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const isSmallScreen = useScreenSize();
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -20,16 +21,9 @@ export default function Nav({ show, onClose }: NavProps) {
       }
     };
 
-    const checkScreenSize = () => {
-      setIsSmallScreen(window.innerWidth < 800);
-    };
-
-    window.addEventListener("resize", checkScreenSize);
     document.addEventListener("click", handleClickOutsideNav);
-    checkScreenSize();
 
     return () => {
-      window.removeEventListener("resize", checkScreenSize);
       document.removeEventListener("click", handleClickOutsideNav);
     };
   }, [onClose]);

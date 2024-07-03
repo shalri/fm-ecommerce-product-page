@@ -1,8 +1,5 @@
 "use client";
 import { product } from "@/lib/data";
-import Image from "next/image";
-import { Product } from "@/lib/types";
-import { useState } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { cn } from "@/lib/utils";
 import ProductCarousel from "./ProductCarousel";

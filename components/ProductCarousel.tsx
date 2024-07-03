@@ -5,6 +5,7 @@ import { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { cn } from "@/lib/utils";
 import Lightbox from "./Lightbox";
+import { useScreenSize } from "@/hooks/useScreenSize";
 
 interface ProductCarouselProps {
   images: {
@@ -17,6 +18,7 @@ export default function ProductCarousel({ images }: ProductCarouselProps) {
   const [current, setCurrent] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const isSmallScreen = useScreenSize();
 
   const nextImage = () => {
     setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
@@ -34,6 +36,10 @@ export default function ProductCarousel({ images }: ProductCarouselProps) {
     setLightboxOpen(false);
   };
 
+  const handleZoomClick = isSmallScreen
+    ? undefined
+    : () => setLightboxOpen(!lightboxOpen);
+
   return (
     <div className="z-10">
       <Lightbox
@@ -50,7 +56,7 @@ export default function ProductCarousel({ images }: ProductCarouselProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0.3 }}
             className="relative h-[300px] min-w-[375px] overflow-hidden bg-ep-orange sm:h-[446px] sm:w-[446px] sm:rounded-[14px]"
-            onClick={() => setLightboxOpen(!lightboxOpen)}
+            onClick={handleZoomClick}
           >
             <Image
               src={images[current].img}
