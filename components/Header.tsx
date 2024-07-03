@@ -30,7 +30,7 @@ export default function Header() {
         )}
       />
       <Cart show={showCart} onClose={() => setShowCart(false)} />
-      <header className="mb-0 px-6 sm:mb-2 sm:border sm:border-b-ep-light-grayish-blue">
+      <header className="mb-0 px-6 sm:mb-[90px] sm:border-b sm:border-ep-light-grayish-blue">
         <div className="flex w-full items-center justify-between pb-6 pt-4 sm:mx-auto sm:max-w-[1440px] sm:justify-start sm:pb-8 sm:pt-6">
           <div className="flex items-end">
             <button
@@ -68,7 +68,7 @@ export default function Header() {
                 )}
               </AnimatePresence>
             </button>
-            <div className="relative h-6 w-6 overflow-hidden rounded-full sm:h-[50px] sm:w-[50px]">
+            <div className="relative h-6 w-6 overflow-hidden rounded-full hover:cursor-pointer hover:border-ep-orange sm:h-[52px] sm:w-[52px] sm:border-[2px]">
               <Image
                 src="/images/image-avatar.png"
                 alt="User Profile"

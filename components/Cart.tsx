@@ -42,7 +42,7 @@ export default function Cart({ show, onClose }: CartProps) {
           exit={{ opacity: 0, y: 10 }}
           ref={cartRef}
           className={cn(
-            "absolute inset-0 bottom-0 left-2 right-2 top-[76px] z-20 block max-h-[256px] rounded-[8px] bg-white py-4",
+            "absolute inset-0 bottom-0 left-2 right-2 top-[76px] z-20 block max-h-[256px] rounded-[8px] bg-white py-4 sm:left-[55dvw] sm:right-10 sm:min-w-[360px] sm:max-w-[360px] sm:shadow-2xl sm:shadow-black/80  desktop:left-[75dvw]",
           )}
         >
           <h2 className="border-b border-ep-light-grayish-blue px-6 pb-6 pt-1 font-bold">

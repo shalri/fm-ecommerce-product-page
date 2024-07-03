@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { cn } from "@/lib/utils";
+import Lightbox from "./Lightbox";
 
 interface ProductCarouselProps {
   images: {
@@ -14,6 +15,8 @@ interface ProductCarouselProps {
 
 export default function ProductCarousel({ images }: ProductCarouselProps) {
   const [current, setCurrent] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const nextImage = () => {
     setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
@@ -22,16 +25,32 @@ export default function ProductCarousel({ images }: ProductCarouselProps) {
     setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
+
   return (
     <div className="z-10">
-      <div className="relative">
+      <Lightbox
+        lightboxOpen={lightboxOpen}
+        images={images}
+        currentIndex={current}
+        onClose={closeLightbox}
+      />
+      <div className="relative sm:hover:cursor-zoom-in">
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
             initial={{ opacity: 0.3 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0.3 }}
-            className="relative h-[300px] min-w-[375px] overflow-hidden bg-ep-orange"
+            className="relative h-[300px] min-w-[375px] overflow-hidden bg-ep-orange sm:h-[446px] sm:w-[446px] sm:rounded-[14px]"
+            onClick={() => setLightboxOpen(!lightboxOpen)}
           >
             <Image
               src={images[current].img}
@@ -41,7 +60,7 @@ export default function ProductCarousel({ images }: ProductCarouselProps) {
             />
           </motion.div>
         </AnimatePresence>
-        <div className="absolute top-[130px] flex w-full justify-between px-4">
+        <div className="absolute top-[130px] flex w-full justify-between px-4 sm:hidden">
           <button
             className="h-[40px] w-[40px] rounded-full bg-ep-white bg-[url(/images/icon-previous.svg)] bg-[length:9px_auto] bg-center bg-no-repeat"
             onClick={prevImage}
@@ -52,19 +71,25 @@ export default function ProductCarousel({ images }: ProductCarouselProps) {
           ></button>
         </div>
       </div>
-      <div className="hidden sm:flex">
-        {images.map((image, index) => (
-          <Image
-            key={index}
-            src={image.thumbnail}
-            alt={`thumbnail ${index + 1}`}
-            className={cn("rounded-md", index === current && "opacity-80")}
-            width={100}
-            height={100}
-            onClick={() => setCurrent(index)}
-          />
-        ))}
-      </div>
+      {!lightboxOpen && (
+        <div className="mt-8 hidden sm:flex sm:gap-x-8">
+          {images.map((image, index) => (
+            <Image
+              key={index}
+              src={image.thumbnail}
+              alt={`thumbnail ${index + 1}`}
+              className={cn(
+                "z-40 h-[88px] w-[88px] cursor-pointer rounded-md",
+                index === current &&
+                  "border-[2px] border-ep-orange opacity-60 transition-opacity duration-300",
+              )}
+              width={100}
+              height={100}
+              onClick={() => setCurrent(index)}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
