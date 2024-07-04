@@ -82,11 +82,11 @@ export default function Lightbox({
               </div>
               <div className="absolute top-[300px] flex w-full justify-between opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <button
-                  className="-ml-5 h-[40px] w-[40px] rounded-full bg-ep-white bg-[url(/fm-ecommerce-product-landing-page/images/icon-previous.svg)] bg-[length:9px_auto] bg-center bg-no-repeat"
+                  className="-ml-5 h-[40px] w-[40px] rounded-full bg-ep-white bg-[url(/fm-ecommerce-product-page/images/icon-previous.svg)] bg-[length:9px_auto] bg-center bg-no-repeat"
                   onClick={() => prevImage()} // Define prevImage function
                 ></button>
                 <button
-                  className="-mr-5 h-[40px] w-[40px] rounded-full bg-ep-white bg-[url(/fm-ecommerce-product-landing-page/images/icon-next.svg)] bg-[length:9px_auto] bg-center bg-no-repeat"
+                  className="-mr-5 h-[40px] w-[40px] rounded-full bg-ep-white bg-[url(/fm-ecommerce-product-page/images/icon-next.svg)] bg-[length:9px_auto] bg-center bg-no-repeat"
                   onClick={nextImage} // Define nextImage function
                 ></button>
               </div>

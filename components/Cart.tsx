@@ -63,7 +63,7 @@ export default function Cart({ show, onClose }: CartProps) {
                 </div>
                 <button
                   onClick={handleClearCart}
-                  className="h-4 w-4 bg-[url(/fm-ecommerce-product-landing-page/images/icon-delete.svg)] bg-center bg-no-repeat"
+                  className="h-4 w-4 bg-[url(/fm-ecommerce-product-page/images/icon-delete.svg)] bg-center bg-no-repeat"
                 ></button>
               </div>
               <a

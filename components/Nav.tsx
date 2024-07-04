@@ -40,7 +40,7 @@ export default function Nav({ show, onClose }: NavProps) {
       )}
     >
       <li
-        className="mb-[52px] h-4 w-4 cursor-pointer bg-[url(/fm-ecommerce-product-landing-page/images/icon-close.svg)] bg-no-repeat sm:hidden"
+        className="mb-[52px] h-4 w-4 cursor-pointer bg-[url(/fm-ecommerce-product-page/images/icon-close.svg)] bg-no-repeat sm:hidden"
         onClick={() => onClose()}
       ></li>
       {navPages.map((page) => (
