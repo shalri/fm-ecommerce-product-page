@@ -53,6 +53,7 @@ export default function Header() {
             <button
               onClick={handleToggleCart}
               className="relative h-5 w-6 bg-[url(/fm-ecommerce-product-page/images/icon-cart.svg)] bg-center bg-no-repeat"
+              aria-label="Open cart"
             >
               <AnimatePresence>
                 {itemCount > 0 && (

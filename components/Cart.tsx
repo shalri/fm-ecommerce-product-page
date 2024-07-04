@@ -64,6 +64,7 @@ export default function Cart({ show, onClose }: CartProps) {
                 <button
                   onClick={handleClearCart}
                   className="h-4 w-4 bg-[url(/fm-ecommerce-product-page/images/icon-delete.svg)] bg-center bg-no-repeat"
+                  aria-label="Delete item from cart"
                 ></button>
               </div>
               <a

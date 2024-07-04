@@ -64,6 +64,7 @@ export default function ProductPage({ itemName }: ProductPageProps) {
               <button
                 onClick={() => setItemCount(itemCount > 0 ? itemCount - 1 : 0)}
                 className="h-[50px]  w-16 bg-[url(/fm-ecommerce-product-page/images/icon-minus.svg)] bg-center bg-no-repeat"
+                aria-label="Decrease Quantity"
               ></button>
               <AnimatePresence mode="wait">
                 <motion.div
@@ -85,6 +86,7 @@ export default function ProductPage({ itemName }: ProductPageProps) {
               <button
                 onClick={() => setItemCount(itemCount + 1)}
                 className="h-[50px]  w-16 bg-[url(/fm-ecommerce-product-page/images/icon-plus.svg)] bg-center bg-no-repeat"
+                aria-label="Increase quantity"
               ></button>
             </div>
 
