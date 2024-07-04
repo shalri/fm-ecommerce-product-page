@@ -2,7 +2,8 @@ import { useCart } from "@/contexts/CartContext";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useClickOutside } from "../hooks/useClickOutside";
+
 interface CartProps {
   show: boolean;
   onClose: () => void;
@@ -11,25 +12,14 @@ interface CartProps {
 export default function Cart({ show, onClose }: CartProps) {
   const { itemCount, itemName, itemPrice, itemThumbnail, clearCart } =
     useCart();
-  const cartRef = useRef<HTMLDivElement>(null);
+  const cartRef = useClickOutside(onClose);
   const total = (parseFloat(itemPrice) * itemCount).toFixed(2);
-
-  useEffect(() => {
-    const handleClickOutsideCart = (e: MouseEvent) => {
-      if (cartRef.current && !cartRef.current.contains(e.target as Node)) {
-        onClose();
-      }
-    };
-
-    document.addEventListener("click", handleClickOutsideCart);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutsideCart);
-    };
-  }, [onClose]);
 
   const handleClearCart = () => {
     clearCart();
+    setTimeout(() => {
+      onClose();
+    }, 500);
   };
 
   return (

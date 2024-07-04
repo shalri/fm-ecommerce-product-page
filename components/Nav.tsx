@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { useScreenSize } from "@/hooks/useScreenSize";
+import { useClickOutside } from "@/hooks/useClickOutside";
 
 interface NavProps {
   show: boolean;
@@ -12,21 +13,7 @@ interface NavProps {
 
 export default function Nav({ show, onClose }: NavProps) {
   const isSmallScreen = useScreenSize();
-  const navRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutsideNav = (e: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) {
-        onClose();
-      }
-    };
-
-    document.addEventListener("click", handleClickOutsideNav);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutsideNav);
-    };
-  }, [onClose]);
+  const navRef = useClickOutside(onClose);
 
   const animateNavWrapper = (children: ReactNode) => (
     <AnimatePresence>
@@ -53,15 +40,17 @@ export default function Nav({ show, onClose }: NavProps) {
       )}
     >
       <li
-        className="mb-[52px] h-4 w-4 bg-[url(/images/icon-close.svg)] bg-no-repeat sm:hidden"
+        className="mb-[52px] h-4 w-4 cursor-pointer bg-[url(/images/icon-close.svg)] bg-no-repeat sm:hidden"
         onClick={() => onClose()}
       ></li>
       {navPages.map((page) => (
         <li
           key={page.page}
-          className="pb-[19px] text-[1.08rem] font-bold text-ep-very-dark-blue sm:pb-0 sm:text-sm sm:font-normal"
+          className="underline-hover transition-color pb-[19px] text-[1.08rem] font-bold text-ep-very-dark-blue duration-300 hover:text-ep-orange sm:pb-0 sm:text-sm sm:font-normal sm:text-ep-dark-grayish-blue sm:hover:text-ep-very-dark-blue"
         >
-          <a href={page.url}>{page.page}</a>
+          <a href={page.url} onClick={onClose}>
+            {page.page}
+          </a>
         </li>
       ))}
     </ul>

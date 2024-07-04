@@ -43,13 +43,13 @@ export default function ProductCarousel({ images }: ProductCarouselProps) {
   const thumbnailAnimation = {
     hidden: {
       opacity: 0,
-      y: 20,
+      x: -50,
     },
     visible: (index: number) => ({
       opacity: 1,
-      y: 0,
+      x: 0,
       transition: {
-        delay: 0.3 * index,
+        delay: 0.1 * index,
       },
     }),
   };
