@@ -82,11 +82,11 @@ export default function ProductCarousel({ images }: ProductCarouselProps) {
         </AnimatePresence>
         <div className="absolute top-[130px] flex w-full justify-between px-4 sm:hidden">
           <button
-            className="h-[40px] w-[40px] rounded-full bg-ep-white bg-[url(/images/icon-previous.svg)] bg-[length:9px_auto] bg-center bg-no-repeat"
+            className="h-[40px] w-[40px] rounded-full bg-ep-white bg-[url(/fm-ecommerce-product-landing-page/images/icon-previous.svg)] bg-[length:9px_auto] bg-center bg-no-repeat"
             onClick={prevImage}
           ></button>
           <button
-            className="h-[40px] w-[40px] rounded-full bg-ep-white bg-[url(/images/icon-next.svg)] bg-[length:9px_auto] bg-center bg-no-repeat"
+            className="h-[40px] w-[40px] rounded-full bg-ep-white bg-[url(/fm-ecommerce-product-landing-page/images/icon-next.svg)] bg-[length:9px_auto] bg-center bg-no-repeat"
             onClick={nextImage}
           ></button>
         </div>

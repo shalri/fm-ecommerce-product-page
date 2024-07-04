@@ -34,7 +34,7 @@ export default function Header() {
         <div className="flex w-full items-center justify-between pb-6 pt-4 sm:mx-auto sm:max-w-[1440px] sm:justify-start sm:pb-8 sm:pt-6">
           <div className="flex items-end">
             <button
-              className="mr-4 h-4 w-4 bg-[url(/images/icon-menu.svg)] bg-cover bg-no-repeat sm:hidden"
+              className="mr-4 h-4 w-4 bg-[url(/fm-ecommerce-product-landing-page/images/icon-menu.svg)] bg-cover bg-no-repeat sm:hidden"
               onClick={handleToggleMobileNav}
             ></button>
             <h2 className="">
@@ -52,7 +52,7 @@ export default function Header() {
           <div className="flex items-center gap-x-5 pt-1 sm:ml-auto sm:gap-x-[46px] sm:justify-self-end">
             <button
               onClick={handleToggleCart}
-              className="relative h-5 w-6 bg-[url(/images/icon-cart.svg)] bg-center bg-no-repeat"
+              className="relative h-5 w-6 bg-[url(/fm-ecommerce-product-landing-page/images/icon-cart.svg)] bg-center bg-no-repeat"
             >
               <AnimatePresence>
                 {itemCount > 0 && (
@@ -70,7 +70,7 @@ export default function Header() {
             </button>
             <div className="relative h-6 w-6 overflow-hidden rounded-full hover:cursor-pointer hover:border-ep-orange sm:h-[52px] sm:w-[52px] sm:border-[2px]">
               <Image
-                src="/images/image-avatar.png"
+                src="/fm-ecommerce-product-landing-page/images/image-avatar.png"
                 alt="User Profile"
                 className="object-contain"
                 fill

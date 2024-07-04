@@ -63,12 +63,13 @@ export default function Cart({ show, onClose }: CartProps) {
                 </div>
                 <button
                   onClick={handleClearCart}
-                  className="h-4 w-4 bg-[url(/images/icon-delete.svg)] bg-center bg-no-repeat"
+                  className="h-4 w-4 bg-[url(/fm-ecommerce-product-landing-page/images/icon-delete.svg)] bg-center bg-no-repeat"
                 ></button>
               </div>
               <a
                 className="transition-color mt-6 block w-full rounded-[8px] bg-ep-orange px-6 py-4 text-center font-bold duration-300 hover:bg-ep-orange/80"
                 href="#"
+                onClick={onClose}
               >
                 Checkout
               </a>

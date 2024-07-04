@@ -63,7 +63,7 @@ export default function ProductPage({ itemName }: ProductPageProps) {
             <div className="mt-6 flex h-[55px] items-center justify-between rounded-md bg-ep-light-grayish-blue sm:mt-0">
               <button
                 onClick={() => setItemCount(itemCount > 0 ? itemCount - 1 : 0)}
-                className="h-[50px]  w-16 bg-[url(/images/icon-minus.svg)] bg-center bg-no-repeat"
+                className="h-[50px]  w-16 bg-[url(/fm-ecommerce-product-landing-page/images/icon-minus.svg)] bg-center bg-no-repeat"
               ></button>
               <AnimatePresence mode="wait">
                 <motion.div
@@ -84,7 +84,7 @@ export default function ProductPage({ itemName }: ProductPageProps) {
               </AnimatePresence>
               <button
                 onClick={() => setItemCount(itemCount + 1)}
-                className="h-[50px]  w-16 bg-[url(/images/icon-plus.svg)] bg-center bg-no-repeat"
+                className="h-[50px]  w-16 bg-[url(/fm-ecommerce-product-landing-page/images/icon-plus.svg)] bg-center bg-no-repeat"
               ></button>
             </div>
 
@@ -109,7 +109,7 @@ export default function ProductPage({ itemName }: ProductPageProps) {
                     },
                   }}
                   exit={{ opacity: 0 }}
-                  className="bg-[url(/images/icon-cart.svg)] bg-no-repeat pl-10 font-bold "
+                  className="bg-[url(/fm-ecommerce-product-landing-page/images/icon-cart.svg)] bg-no-repeat pl-10 font-bold "
                 >
                   {itemCount > 0 ? "Added" : "Add"} to cart
                 </motion.span>
